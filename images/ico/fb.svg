@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41.7 41.7">
+  <defs>
+    <style>
+      .a {
+        fill: #3c5a99;
+      }
+
+      .b {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <title>Ресурс 1</title>
+  <g>
+    <rect class="a" width="41.7" height="41.67"/>
+    <path class="b" d="M28.3,41.6V27h4.9l.7-5.7H28.3V17.6c0-1.7.5-2.8,2.8-2.8h3V9.7a40.5,40.5,0,0,0-4.4-.2c-4.4,0-7.3,2.7-7.3,7.5v4.2H17.5V27h4.9V41.6Z"/>
+  </g>
+</svg>
