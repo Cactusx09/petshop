@@ -77,7 +77,7 @@ $(document).ready(function(){
     });
 
     //popups
-    $('.s_reviews__item .g_link').click(function(e){
+    $('.s_speak__item .g_link').click(function(e){
         e.preventDefault();
         var visible = $('.popup._visible');
 
@@ -104,7 +104,7 @@ $(document).ready(function(){
         $('.overlay').removeClass('_visible');
         visiblePopup.addClass('_back');
         if(visiblePopup.hasClass('popup_video')){
-            players['player'].stopVideo();
+            players['playerPop'].stopVideo();
         }
         setTimeout(function(){
             visiblePopup.removeClass('_visible _back');
