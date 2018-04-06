@@ -22,14 +22,16 @@
 		<header class="header">
 		    <div class="container">
 		        <div class="header__body">
-                    <a href="#" class="header__logo"><span><img src="images/logo-fixed.png" alt=""></span></a>
+                    <div class="header__nav_hamb"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60.1 60.1"><path d="M57.1 51.9H16.9c-1.7 0-3-1.3-3-3s1.3-3 3-3h40.2c1.7 0 3 1.3 3 3S58.8 51.9 57.1 51.9z"/><path d="M57.1 33.1H16.9c-1.7 0-3-1.3-3-3s1.3-3 3-3h40.2c1.7 0 3 1.3 3 3C60.1 31.7 58.8 33.1 57.1 33.1z"/><path d="M57.1 14.2H16.9c-1.7 0-3-1.3-3-3s1.3-3 3-3h40.2c1.7 0 3 1.3 3 3S58.8 14.2 57.1 14.2z"/><circle cx="4" cy="11.5" r="4"/><circle cx="4" cy="30.1" r="4"/><circle cx="4" cy="48.7" r="4"/></svg></div>
                     <nav class="header__nav">
+                        <a href="#" class="header__logo"><span><img src="images/logo-fixed.png" alt=""></span></a>
                         <a href="#" id="s_about"><span>О фестивале</span></a>
                         <a href="#" id="s_speak"><span>Спикеры</span></a>
                         <a href="#" id="s_vote"><span>Голосуй за Блогера</span></a>
                         <a href="#" id="s_reviews"><span>Отзывы</span></a>
                         <a href="#" id="s_partners"><span>Партнеры</span></a>
                         <a href="#" id="s_contacts"><span>Контакты</span></a>
+                        <div class="header__nav_close">&times;</div>
                     </nav>
                     <div class="header__social">
                         <a href="#"><span><img src="images/ico/fb.svg" alt=""></span></a>
@@ -83,6 +85,8 @@
                 <h4>На площади более 1000 м² гостей ждет 13 тематических зон:</h4>
                 <div class="s_about__body">
                     <div class="s_about__sizer"></div>
+                    <div class="s_about__item _fixer"></div>
+
                     <div class="s_about__item _blue _active">
                         <div class="s_about__item_txt">
                             <h5><span>ЛЕКТОРИЙ</span></h5>
@@ -143,7 +147,7 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt culpa qui officia deserunt mollit anim id est laborum.</p>
                         </div>
                     </div>
-                    <div class="s_about__item _red _nextrow">
+                    <div class="s_about__item _red">
                         <div class="s_about__item_txt">
                             <h5><span>БЛОГЕРЫ</span></h5>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -166,8 +170,8 @@
         </section>
         <section class="s_video">
             <div class="container">
-                <div class="s_video__video" data-name="video" data-src="https://youtu.be/UeBFEanVsp4">
-                    <iframe id="player" class="_video" type="text/html" src="http://www.youtube.com/embed/UeBFEanVsp4?enablejsapi=1" frameborder="0"></iframe>
+                <div class="s_video__video" data-name="video" data-src="https://youtu.be/ZHRIByM05AA">
+                    <iframe id="player" class="_video" type="text/html" src="http://www.youtube.com/embed/ZHRIByM05AA?enablejsapi=1" frameborder="0"></iframe>
                     <img src="images/video.jpg" alt="">
                     <i><img src="images/ico/play.png" alt=""></i>
                 </div>
@@ -535,7 +539,7 @@
                     </div>
                     <div class="s_vote__choose2_right" style="background-image: url('images/pattern-5.png')">
                         <h5>531 <span>Проголосовали</span></h5>
-                        <a href="#" class="g_btn_white g_btn"><span>Голосовать</span></a>
+                        <a href="#" class="g_btn_white g_btn _disabled"><span>Голосовать</span></a>
                     </div>
                 </div>
             </div>

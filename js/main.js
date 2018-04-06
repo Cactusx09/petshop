@@ -3,8 +3,10 @@ $(document).ready(function(){
         var Shuffle = window.Shuffle;
         var myShuffle = new Shuffle(document.querySelector('.s_about__body'), {
             itemSelector: '.s_about__item',
-            sizer: '.s_about__sizer',
-            speed: 700
+//            sizer: '.s_about__sizer',
+            speed: 700,
+            isCentered: true,
+            gutterWidth: 20
         });
         Shuffle.ShuffleItem.Scale.HIDDEN = 0.5;
     }
@@ -56,6 +58,7 @@ $(document).ready(function(){
     //menu
     $('nav a').on('click', function(e) {
         var scrollAnchor = $(this).attr('id');
+        $('.header__nav').removeClass('_active');
         if(scrollAnchor){
             e.preventDefault();
             var scrollPoint = $('.' + scrollAnchor).offset().top - 28;
@@ -63,17 +66,23 @@ $(document).ready(function(){
                 scrollTop: scrollPoint
             }, 500);
             return false;
+        }else{
+            if($(this).attr('href')="#"){
+                e.preventDefault();
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 500);
+                return false;
+            }
         }
     });
-    $('.header__logo').on('click', function(e) {
-        var scrollAnchor = $(this).attr('href');
-        if(scrollAnchor=="#"){
-            e.preventDefault();
-            $('body,html').animate({
-                scrollTop: 0
-            }, 500);
-            return false;
-        }
+
+    //mobile nav
+    $('.header__nav_hamb').click(function(){
+        $('.header__nav').addClass('_active');
+    });
+    $('.header__nav_close').click(function(){
+        $('.header__nav').removeClass('_active');
     });
 
     //popups
@@ -111,6 +120,21 @@ $(document).ready(function(){
         },450);
     });
 
+    //vote btn enable
+    var yeah1 = false,
+        yeah2 = false;
+    $('.s_vote__choose .g_radio').click(function(){
+        yeah1 = true;
+        if(yeah2){
+            $('.s_vote__choose2_right .g_btn').removeClass('_disabled');
+        }
+    });
+    $('.s_vote__choose2 .g_radio').click(function(){
+        yeah2 = true;
+        if(yeah1){
+            $('.s_vote__choose2_right .g_btn').removeClass('_disabled');
+        }
+    });
 });
 
 //gmap init
