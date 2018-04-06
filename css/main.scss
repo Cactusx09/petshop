@@ -2131,6 +2131,22 @@ $t: .25s;
         opacity: 0;
         transform: translateY(20%) !important;
     }
+    &_thnx{
+        max-width: 400px;
+        padding: 3rem 1rem;
+        h3{
+            font-size: 2.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            span{
+                display: block;
+                font-weight: 400;
+                font-size: 1.5rem;
+                text-transform: none;
+                margin-top: .5rem;
+            }
+        }
+    }
     iframe{
         position: absolute;
         top: 0;

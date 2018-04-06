@@ -86,12 +86,16 @@ $(document).ready(function(){
     });
 
     //popups
-    $('.s_speak__item .g_link').click(function(e){
+    $('._open_pop, .s_speak__item .g_link').click(function(e){
         e.preventDefault();
-        var visible = $('.popup._visible');
-
-        var name = 'video',
-            popup = $('.popup_video'),
+        var visible = $('.popup._visible'),
+            name;
+        if($(this).hasClass('_open_pop')){
+            name = $(this).data('name');
+        }else{
+            name = 'video'
+        };
+        var popup = $('.popup_'+name),
             popup_h = popup.outerHeight(),
             popup_w = popup.outerWidth(),
             h = $(window).height(),
@@ -100,11 +104,19 @@ $(document).ready(function(){
             'top': px+'px',
             'margin-left': '-'+ popup_w/2 +'px',
         });
-        players['player'].stopVideo();
-        var link = $(this).data('src'),
-            src = link.split('/');
-        players['playerPop'].loadVideoById(src[src.length-1]);
-        popup.find('form').trigger( 'reset' );
+        if(name=="video"){
+            players['player'].stopVideo();
+            var link = $(this).data('src'),
+                src = link.split('/');
+            players['playerPop'].loadVideoById(src[src.length-1]);
+        }else if(name=="thnx"){
+            setTimeout(function(){
+                popup.addClass('_back');
+                setTimeout(function(){
+                    $('.overlay, .popup').removeClass('_visible _back');
+                },450);
+            },3000);
+        }
         $('.popup.popup_'+name+', .overlay').addClass('_visible');
     });
     $('.overlay, ._close_pop').click(function(e){
