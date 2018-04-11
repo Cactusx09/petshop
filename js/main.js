@@ -3,7 +3,7 @@ $(document).ready(function(){
         var Shuffle = window.Shuffle;
         var myShuffle = new Shuffle(document.querySelector('.s_about__body'), {
             itemSelector: '.s_about__item',
-//            sizer: '.s_about__sizer',
+            sizer: '.s_about__sizer',
             speed: 700,
             isCentered: true,
             gutterWidth: 20
@@ -147,6 +147,11 @@ $(document).ready(function(){
             $('.s_vote__choose2_right .g_btn').removeClass('_disabled');
         }
     });
+
+    if(Modernizr.mq('only screen and (max-width: 960px)') & $('.s_speak').length){
+        $('.s_speak__body').append($('.s_speak__inner .s_speak__item'));
+        $('.s_speak__inner').remove();
+    }
 });
 
 //gmap init
@@ -166,6 +171,13 @@ function mapInitialize(el_id) {
     var mapElement = document.getElementById(el_id);
     var map = new google.maps.Map(mapElement, mapOptions);
 
+    var icoImg = {
+        path: 'M409.1 109.2c-19.6-33.6-46.2-60.2-79.8-79.8C295.7 9.8 259.1 0 219.3 0c-39.8 0-76.5 9.8-110.1 29.4 -33.6 19.6-60.2 46.2-79.8 79.8C9.8 142.8 0 179.5 0 219.3c0 39.8 9.8 76.5 29.4 110.1 19.6 33.6 46.2 60.2 79.8 79.8 33.6 19.6 70.3 29.4 110.1 29.4s76.5-9.8 110.1-29.4c33.6-19.6 60.2-46.2 79.8-79.8 19.6-33.6 29.4-70.3 29.4-110.1C438.5 179.5 428.7 142.8 409.1 109.2zM353.7 297.2c-13.9 23.8-32.7 42.6-56.5 56.5 -23.8 13.9-49.8 20.8-77.9 20.8 -28.2 0-54.1-6.9-77.9-20.8 -23.8-13.9-42.6-32.7-56.5-56.5 -13.9-23.8-20.8-49.8-20.8-77.9 0-28.2 6.9-54.2 20.8-77.9 13.9-23.8 32.7-42.6 56.5-56.5 23.8-13.9 49.8-20.8 77.9-20.8 28.2 0 54.2 6.9 77.9 20.8 23.8 13.9 42.6 32.7 56.5 56.5 13.9 23.8 20.8 49.8 20.8 77.9C374.6 247.4 367.6 273.4 353.7 297.2z',
+        fillColor: '#f15a38',
+        fillOpacity: 1,
+        scale: 0.2,
+        strokeOpacity: 0
+    };
 
     var points = $('#'+el_id).data('points').split(';');
     points.forEach(function(feature) {
@@ -177,16 +189,10 @@ function mapInitialize(el_id) {
                 lat: Number(dot[0]),
                 lng: Number(dot[1])
             },
+            icon: icoImg,
             map: map,
             title: "Мы находимся тут!",
             optimized: false
-        });
-        var infowindow = new google.maps.InfoWindow({
-            content: content
-        });
-        infowindow.open(map, marker);
-        marker.addListener('click', function () {
-            infowindow.open(map, marker);
         });
     });
 }
