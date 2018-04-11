@@ -590,15 +590,36 @@ $t: .25s;
     user-select: none;
     cursor: pointer;
     @include flex(fs,c,$i:i);
-    @include h_center($c:$y, $h:2px);
     &:hover{
         i{
-            transform: translateX(6px);
+            transform: translateX(4px);
+            svg{
+                path{
+                    fill: #fff;
+                }
+                circle{
+                    fill: $b !important;
+                }
+            }
         }
     }
     i{
         margin-left: .9rem;
         transition: $t;
+        width: 30px;
+        margin-top: -3px;
+        svg{
+            width: 34px;
+            path{
+                fill: $b;
+                transition: $t;
+            }
+            circle{
+                stroke-width: 12px !important;
+                stroke: $b !important;
+                transition: $t;
+            }
+        }
     }
 }
 .g_go_left{
@@ -1329,7 +1350,7 @@ $t: .25s;
             }
         }
         &._active{
-            max-width: calc(40% - 19px);
+            max-width: calc(40% - 24px);
             color: #fff;
             padding-top: calc(37.1% - 11px);
             cursor: default;
@@ -1367,8 +1388,8 @@ $t: .25s;
         p{
             visibility: hidden;
             margin-top: .7rem;
-            font-size: 1.059rem;
-            line-height: 1.5;
+            font-size: 1.049rem;
+            line-height: 1.4;
             transform: translateX(-9rem) translateY(7rem);
             opacity: 0;
             transition: transform $t;
@@ -3200,6 +3221,15 @@ $t: .25s;
         }
         &__top{
             margin-bottom: 2rem;
+        }
+    }
+    .s_about{
+        &__item{
+            &_txt{
+                >p{
+                    font-size: 1rem;
+                }
+            }
         }
     }
     .s_vote{

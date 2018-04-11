@@ -1,11 +1,14 @@
 $(document).ready(function(){
     if($('.s_about').length){
+        if(Modernizr.mq('only screen and (max-width: 1165px)')){
+            $('.s_about__body').prepend('<div class="s_about__item _fixer"></div>');
+        }
         var Shuffle = window.Shuffle;
         var myShuffle = new Shuffle(document.querySelector('.s_about__body'), {
             itemSelector: '.s_about__item',
             sizer: '.s_about__sizer',
             speed: 700,
-            isCentered: true,
+//            isCentered: true,
             gutterWidth: 20
         });
         Shuffle.ShuffleItem.Scale.HIDDEN = 0.5;
