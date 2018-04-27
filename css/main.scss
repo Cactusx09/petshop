@@ -1088,6 +1088,19 @@ $t: .25s;
     padding-left: 1.4rem;
     @include placeholder{
         color: #81bddf;
+        transition: $t;
+    }
+    &:focus{
+        @include placeholder{
+            opacity: 0;
+        }
+    }
+    &._error{
+        background-color: $r2 !important;
+        color: #fff !important;
+        @include placeholder{
+            color: #fff;
+        }
     }
 }
 
@@ -1436,9 +1449,6 @@ $t: .25s;
             i{
                 transform: scale(0.9);
             }
-            img{
-                opacity: .9;
-            }
         }
         &:active{
             i{
@@ -1509,6 +1519,29 @@ $t: .25s;
         margin-left: -2rem;
         padding-left: 2rem;
         padding-right: 7rem;
+        &_thnx{
+            position: absolute;
+            background-color: #3da2db;
+            color: #fff;
+            width: 87%;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            z-index: -1;
+            transition: $t;
+            &._active{
+                opacity: 1;
+                visibility: visible;
+                pointer-events: all;
+                z-index: 5;
+            }
+            .g_title{
+                color: #fff;
+                +p{
+                    color: #fff;
+                }
+            }
+        }
         >img{
             position: absolute;
             top: -300px;
@@ -1965,6 +1998,8 @@ $t: .25s;
             background-repeat: no-repeat;
             background-position: center;
             margin-right: 1.2rem;
+            border-radius: 50%;
+            overflow: hidden;
         }
         >img{
             margin-bottom: 1.2rem;
@@ -2114,6 +2149,9 @@ $t: .25s;
             line-height: 2;
             font-size: 1.765rem;
             color: $b;
+        }
+        p{
+            margin-top: 0.3rem;
         }
         >small{
             font-weight: 500;
@@ -2479,6 +2517,20 @@ $t: .25s;
             }
         }
     }
+    .s_win{
+        &__left{
+            min-width: 206px;
+        }
+        &__form{
+            margin-right: -20px;
+            >img{
+                margin-left: -220px;
+            }
+            .g_input{
+                width: 361px;
+            }
+        }
+    }
 }
 @media only screen and (max-width: 960.5px) {
     .header{
@@ -2616,6 +2668,18 @@ $t: .25s;
 //                width: calc(50% - 3rem);
 //            }
 //        }
+    }
+    .s_win{
+        &__body{
+            flex-wrap: wrap;
+        }
+        &__left{
+            margin-bottom: 2rem;
+            max-width: 136px;
+            min-width: 0;
+        }
+        &__form{
+        }
     }
     .s_program{
         &__row{
@@ -2962,6 +3026,32 @@ $t: .25s;
             }
         }
     }
+    .s_win{
+        &__body{
+
+        }
+        &__left{
+
+        }
+        &__form{
+            flex-wrap: wrap;
+            max-width: 100%;
+            height: auto;
+            padding: 3rem 0;
+            margin-left: -20px;
+            max-width: calc(100% + 40px);
+            padding-left: 20px;
+            >img{
+                z-index: -1;
+                margin-left: -339px;
+                top: -431px;
+                opacity: 0.3;
+            }
+            button{
+                margin-top: 1.5rem;
+            }
+        }
+    }
 
     .s_txt{
         padding: 1.1rem 0;
@@ -3226,7 +3316,38 @@ $t: .25s;
             margin-top: -5rem;
         }
     }
+    .s_scheme{
+        .g_title{
+            padding-left: 0;
+        }
+    }
+    .s_win{
+        padding-top: 4rem;
+        .g_title{
+            padding-left: 0;
+        }
+        &__left{
 
+        }
+        .g_title{
+            font-size: 1.7rem;
+            br{
+                display: none;
+            }
+        }
+        &__form{
+            text-align: center;
+            padding-right: 20px;
+            .g_input{
+                width: 100%;
+                margin-right: 0;
+            }
+            button{
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
     .s_txt{
         padding-bottom: 2rem;
         .s_main__center_top{
