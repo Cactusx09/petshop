@@ -158,46 +158,81 @@ $(document).ready(function(){
 });
 
 //gmap init
+//function mapInitialize(el_id) {
+//    var center = $('#'+el_id).data('center').split(','),
+//        zoom = $('#'+el_id).data('zoom');
+//    var center = new google.maps.LatLng(center[0],center[1]);
+//    var mapOptions = {
+//        zoom: zoom,
+//        center: center,
+//        mapTypeControl: false,
+//        scrollwheel: false,
+//        navigationControl: false,
+//        scaleControl: false,
+//        styles: mapStyles
+//    };
+//    var mapElement = document.getElementById(el_id);
+//    var map = new google.maps.Map(mapElement, mapOptions);
+//
+//    var icoImg = {
+//        path: 'M409.1 109.2c-19.6-33.6-46.2-60.2-79.8-79.8C295.7 9.8 259.1 0 219.3 0c-39.8 0-76.5 9.8-110.1 29.4 -33.6 19.6-60.2 46.2-79.8 79.8C9.8 142.8 0 179.5 0 219.3c0 39.8 9.8 76.5 29.4 110.1 19.6 33.6 46.2 60.2 79.8 79.8 33.6 19.6 70.3 29.4 110.1 29.4s76.5-9.8 110.1-29.4c33.6-19.6 60.2-46.2 79.8-79.8 19.6-33.6 29.4-70.3 29.4-110.1C438.5 179.5 428.7 142.8 409.1 109.2zM353.7 297.2c-13.9 23.8-32.7 42.6-56.5 56.5 -23.8 13.9-49.8 20.8-77.9 20.8 -28.2 0-54.1-6.9-77.9-20.8 -23.8-13.9-42.6-32.7-56.5-56.5 -13.9-23.8-20.8-49.8-20.8-77.9 0-28.2 6.9-54.2 20.8-77.9 13.9-23.8 32.7-42.6 56.5-56.5 23.8-13.9 49.8-20.8 77.9-20.8 28.2 0 54.2 6.9 77.9 20.8 23.8 13.9 42.6 32.7 56.5 56.5 13.9 23.8 20.8 49.8 20.8 77.9C374.6 247.4 367.6 273.4 353.7 297.2z',
+//        fillColor: '#f15a38',
+//        fillOpacity: 1,
+//        scale: 0.2,
+//        strokeOpacity: 0
+//    };
+//
+//    var points = $('#'+el_id).data('points').split(';');
+//    points.forEach(function(feature) {
+//        var dot_info = feature.split('['),
+//            dot = dot_info[0].split(','),
+//            content = dot_info[1];
+//        var marker = new google.maps.Marker({
+//            position: {
+//                lat: Number(dot[0]),
+//                lng: Number(dot[1])
+//            },
+//            icon: icoImg,
+//            map: map,
+//            title: "Мы находимся тут!",
+//            optimized: false
+//        });
+//    });
+//}
 function mapInitialize(el_id) {
     var center = $('#'+el_id).data('center').split(','),
-        zoom = $('#'+el_id).data('zoom');
-    var center = new google.maps.LatLng(center[0],center[1]);
-    var mapOptions = {
-        zoom: zoom,
-        center: center,
-        mapTypeControl: false,
-        scrollwheel: false,
-        navigationControl: false,
-        scaleControl: false,
-        styles: mapStyles
-    };
-    var mapElement = document.getElementById(el_id);
-    var map = new google.maps.Map(mapElement, mapOptions);
+        points = $('#'+el_id).data('points').split(';'),
+        dot_info = points[0].split('['),
+        dot = dot_info[0].split(','),
+        content = dot_info[1];
+    ymaps.ready(function () {
+        var myMap = new ymaps.Map(el_id, {
+            center: [center[0],center[1]],
+            zoom: 16,
+            controls: [ 'typeSelector', 'fullscreenControl']
+        }, {
+            searchControlProvider: 'yandex#search'
+        }),
 
-    var icoImg = {
-        path: 'M409.1 109.2c-19.6-33.6-46.2-60.2-79.8-79.8C295.7 9.8 259.1 0 219.3 0c-39.8 0-76.5 9.8-110.1 29.4 -33.6 19.6-60.2 46.2-79.8 79.8C9.8 142.8 0 179.5 0 219.3c0 39.8 9.8 76.5 29.4 110.1 19.6 33.6 46.2 60.2 79.8 79.8 33.6 19.6 70.3 29.4 110.1 29.4s76.5-9.8 110.1-29.4c33.6-19.6 60.2-46.2 79.8-79.8 19.6-33.6 29.4-70.3 29.4-110.1C438.5 179.5 428.7 142.8 409.1 109.2zM353.7 297.2c-13.9 23.8-32.7 42.6-56.5 56.5 -23.8 13.9-49.8 20.8-77.9 20.8 -28.2 0-54.1-6.9-77.9-20.8 -23.8-13.9-42.6-32.7-56.5-56.5 -13.9-23.8-20.8-49.8-20.8-77.9 0-28.2 6.9-54.2 20.8-77.9 13.9-23.8 32.7-42.6 56.5-56.5 23.8-13.9 49.8-20.8 77.9-20.8 28.2 0 54.2 6.9 77.9 20.8 23.8 13.9 42.6 32.7 56.5 56.5 13.9 23.8 20.8 49.8 20.8 77.9C374.6 247.4 367.6 273.4 353.7 297.2z',
-        fillColor: '#f15a38',
-        fillOpacity: 1,
-        scale: 0.2,
-        strokeOpacity: 0
-    };
+            //Маркер
+            myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+                hintContent: content,
+                balloonContent: content
+            }, {
+                // Опции.
+                // Необходимо указать данный тип макета.
+                iconLayout: 'default#image',
+                // Своё изображение иконки метки.
+                iconImageHref: 'images/pin.png',
+                // Размеры метки.
+                iconImageSize: [42, 58],
+                // Смещение левого верхнего угла иконки относительно
+                // её "ножки" (точки привязки).
+                iconImageOffset: [-45, -98]
+            })
 
-    var points = $('#'+el_id).data('points').split(';');
-    points.forEach(function(feature) {
-        var dot_info = feature.split('['),
-            dot = dot_info[0].split(','),
-            content = dot_info[1];
-        var marker = new google.maps.Marker({
-            position: {
-                lat: Number(dot[0]),
-                lng: Number(dot[1])
-            },
-            icon: icoImg,
-            map: map,
-            title: "Мы находимся тут!",
-            optimized: false
-        });
-    });
+        myMap.geoObjects.add(myPlacemark);
+    })
 }
 
 //load youtube iframe api
