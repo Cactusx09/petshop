@@ -231,7 +231,8 @@ function mapInitialize(el_id) {
                 // Смещение левого верхнего угла иконки относительно
                 // её "ножки" (точки привязки).
                 iconImageOffset: [-53, -105]
-            })
+            });
+        myMap.behaviors.disable('scrollZoom');
 
         myMap.geoObjects.add(myPlacemark);
 
@@ -273,9 +274,29 @@ function mapInitialize(el_id) {
             // Коэффициент прозрачности.
             strokeOpacity: 0.8
         });
+
+        var myPolyline3 = new ymaps.Polyline([
+            // Указываем координаты вершин ломаной.
+            [55.758372, 37.659054],
+            [55.758432, 37.657557],
+            [55.761676, 37.657371],
+            [55.764106, 37.656447]
+        ], {
+        }, {
+            // Задаем опции геообъекта.
+            // Отключаем кнопку закрытия балуна.
+            balloonCloseButton: false,
+            // Цвет линии.
+            strokeColor: "#245ba2",
+            // Ширина линии.
+            strokeWidth: 4,
+            // Коэффициент прозрачности.
+            strokeOpacity: 0.8
+        });
         // Добавляем линии на карту.
         myMap.geoObjects.add(myPolyline1);
         myMap.geoObjects.add(myPolyline2);
+        myMap.geoObjects.add(myPolyline3);
 
     });
 
