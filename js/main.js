@@ -179,20 +179,25 @@ $(document).ready(function(){
     });
 
     //vote btn enable
-    var yeah1 = false,
-        yeah2 = false;
+//    var yeah1 = false;
+//        yeah2 = false;
+    $('.s_vote__choose2_btn').click(function(){
+      var n = parseInt($('.s_vote__choose2_right h5 b').text()) + 1;
+      $('.s_vote__choose2_right h5 b').text(n);
+      $('.s_vote__choose2_btn').addClass('_disabled');
+    });
     $('.s_vote__choose .g_radio').click(function(){
-        yeah1 = true;
-        if(yeah2){
-            $('.s_vote__choose2_right .g_btn').removeClass('_disabled');
-        }
+//        yeah1 = true;
+//        if(yeah2){
+      $('.s_vote__choose2_right .g_btn').removeClass('_disabled');
+//        }
     });
-    $('.s_vote__choose2 .g_radio').click(function(){
-        yeah2 = true;
-        if(yeah1){
-            $('.s_vote__choose2_right .g_btn').removeClass('_disabled');
-        }
-    });
+//    $('.s_vote__choose2 .g_radio').click(function(){
+//        yeah2 = true;
+//        if(yeah1){
+//            $('.s_vote__choose2_right .g_btn').removeClass('_disabled');
+//        }
+//    });
 
     if(Modernizr.mq('only screen and (max-width: 960px)') & $('.s_speak').length){
         $('.s_speak__body').append($('.s_speak__inner .s_speak__item'));

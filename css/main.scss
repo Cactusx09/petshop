@@ -1638,6 +1638,26 @@ $t: .25s;
         .g_link{
             margin-bottom: 1.3rem;
         }
+      &_soc{
+        @include flex(fs,s);
+        transition: $t*2;
+        opacity: 0;
+        margin-bottom: 0.7rem;
+        transform: translateY(-30px);
+        a{
+          transition: $t;
+          overflow: hidden;
+          &:not(:last-of-type){
+            margin-right: 0.5rem;
+          }
+          &:hover{
+            border-radius: 50%;
+          }
+        }
+        img{
+          width: 30px;
+        }
+      }
         &:hover{
             .s_speak{
                 &__img{
@@ -1649,6 +1669,12 @@ $t: .25s;
                         transform: none;
                     }
                 }
+              &__item{
+                &_soc{
+                  transform: none;
+                  opacity: .9;
+                }
+              }
             }
         }
     }
@@ -1879,7 +1905,8 @@ $t: .25s;
     }
 
     &__choose2{
-        @include flex(sb,fs);
+        @include flex(c,fs);
+        margin-top: 3.5rem;
         &_left{
             .g_radio{
                 &:not(:last-of-type){
